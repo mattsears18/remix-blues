@@ -204,6 +204,7 @@ jobs:
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     environment:
       name: ${{ needs.build.outputs.env_name }}
+      url: ${{ secrets.ENVIRONMENT_DEPLOYMENT_URL }}
 
     steps:
       - name: 🛑 Cancel Previous Runs

@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/user/ddad2840-c8ce-4174-b584-e390bdb7f01d/project/dfbfe8e8-4143-453a-9988-1c80cb7aa011.svg)](https://wakatime.com/badge/user/ddad2840-c8ce-4174-b584-e390bdb7f01d/project/dfbfe8e8-4143-453a-9988-1c80cb7aa011)
 [![CodeQL](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml)
 
 # Remix Blues Stack

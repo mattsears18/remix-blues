@@ -195,7 +195,6 @@ jobs:
 
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}
-      deployment_url: ${{ secrets.ENVIRONMENT_DEPLOYMENT_URL }}
 
   deploy:
     name: 🚀 Deploy
@@ -205,12 +204,9 @@ jobs:
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     environment:
       name: ${{ needs.build.outputs.env_name }}
-      url: ${{ needs.build.outputs.deployment_url }}
+      url: https://google.com
 
     steps:
-      - name: DEPLOYMENT_URL
-        run: echo "Deploying to - ${{ needs.build.outputs.deployment_url }}"
-
       - name: 🛑 Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
 

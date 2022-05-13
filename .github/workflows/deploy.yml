@@ -191,7 +191,7 @@ jobs:
           fi
 
       - name: Echo env_name
-        run: echo "I'm using variable ${{ steps.branch_check.outputs.env_name }}"
+        run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
 
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}

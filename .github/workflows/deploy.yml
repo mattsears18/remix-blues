@@ -193,21 +193,6 @@ jobs:
       - name: Echo env_name
         run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
 
-      - name: Check again to get
-        id: branch_check_url
-        run: |
-          echo "Running on branch ${{ github.ref }}"
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "::set-output name=env_name::Production"
-          elif [ "${{ github.ref }}" = "refs/heads/dev" ]; then
-            echo "::set-output name=env_name::Staging"
-          else
-              echo "::set-output name=env_name::Features"
-          fi
-
-      - name: Echo env_name
-        run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
-
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}
       deployment_url: ${{ secrets.ENVIRONMENT_DEPLOYMENT_URL }}
@@ -223,6 +208,9 @@ jobs:
       url: ${{ needs.build.outputs.deployment_url }}
 
     steps:
+      - name: DEPLOYMENT_URL
+        run: echo "Deploying to - ${{ needs.build.outputs.deployment_url }}"
+
       - name: 🛑 Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
 

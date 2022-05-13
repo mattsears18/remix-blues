@@ -193,10 +193,14 @@ jobs:
       - name: Echo env_name
         run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
 
-      - name: DEPLOYMENT_URL
+      - name: Set DEPLOYMENT_URL
         id: deployment_url
         run: |
-          echo "::set-output name=deployment_url::${{ secrets.DEPLOYMENT_URL }}"
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "::set-output name=deployment_url::https://remix-blues-a27a.fly.dev/"
+          elif [ "${{ github.ref }}" = "refs/heads/dev" ]; then
+            echo "::set-output name=deployment_url::https://remix-blues-a27a-staging.fly.dev/"
+          fi
 
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}

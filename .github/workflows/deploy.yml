@@ -193,8 +193,14 @@ jobs:
       - name: Echo env_name
         run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
 
+      - name: DEPLOYMENT_URL
+        id: deployment_url
+        run: |
+          echo "::set-output name=deployment_url::${{ secrets.DEPLOYMENT_URL }}"
+
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}
+      deployment_url: ${{ steps.deployment_url.outputs.deployment_url }}
 
   deploy:
     name: 🚀 Deploy
@@ -204,7 +210,7 @@ jobs:
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     environment:
       name: ${{ needs.build.outputs.env_name }}
-      url: https://google.com
+      url: ${{ needs.build.outputs.deployment_url }}
 
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -235,6 +241,3 @@ jobs:
           args: "deploy --image registry.fly.io/${{ steps.app_name.outputs.value }}:${{ github.ref_name }}-${{ github.sha }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
-    outputs:
-      env_name: ${{ steps.branch_check.outputs.env_name }}

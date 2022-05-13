@@ -1,3 +1,6 @@
+[![CodeQL](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml)
+[![🚀 Deploy](https://github.com/mattsears18/remix-blues/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/mattsears18/remix-blues/actions/workflows/deploy.yml)
+
 # Remix Blues Stack
 
 ![The Remix Blues Stack](https://repository-images.githubusercontent.com/461012689/37d5bd8b-fa9c-4ab0-893c-f0a199d5012d)

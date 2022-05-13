@@ -1,5 +1,6 @@
 [![wakatime](https://wakatime.com/badge/user/ddad2840-c8ce-4174-b584-e390bdb7f01d/project/dfbfe8e8-4143-453a-9988-1c80cb7aa011.svg)](https://wakatime.com/badge/user/ddad2840-c8ce-4174-b584-e390bdb7f01d/project/dfbfe8e8-4143-453a-9988-1c80cb7aa011)
 [![CodeFactor](https://www.codefactor.io/repository/github/mattsears18/remix-blues/badge)](https://www.codefactor.io/repository/github/mattsears18/remix-blues)
+[![CodeScene Code Health](https://codescene.io/projects/26182/status-badges/code-health)](https://codescene.io/projects/26182)
 [![CodeQL](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mattsears18/remix-blues/actions/workflows/codeql-analysis.yml)
 
 # Remix Blues Stack

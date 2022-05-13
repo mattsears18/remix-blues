@@ -184,6 +184,8 @@ jobs:
     needs: [lint, typecheck, vitest, cypress, build]
     # only build/deploy main branch on pushes
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
+    environment:
+      name: "Production"
 
     steps:
       - name: 🛑 Cancel Previous Runs

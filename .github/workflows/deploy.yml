@@ -193,8 +193,24 @@ jobs:
       - name: Echo env_name
         run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
 
+      - name: Check again to get
+        id: branch_check_url
+        run: |
+          echo "Running on branch ${{ github.ref }}"
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "::set-output name=env_name::Production"
+          elif [ "${{ github.ref }}" = "refs/heads/dev" ]; then
+            echo "::set-output name=env_name::Staging"
+          else
+              echo "::set-output name=env_name::Features"
+          fi
+
+      - name: Echo env_name
+        run: echo "Detected ${{ steps.branch_check.outputs.env_name }} Environment"
+
     outputs:
       env_name: ${{ steps.branch_check.outputs.env_name }}
+      deployment_url: ${{ secrets.ENVIRONMENT_DEPLOYMENT_URL }}
 
   deploy:
     name: 🚀 Deploy
@@ -204,7 +220,7 @@ jobs:
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     environment:
       name: ${{ needs.build.outputs.env_name }}
-      url: ${{ secrets.ENVIRONMENT_DEPLOYMENT_URL }}
+      url: ${{ needs.build.outputs.deployment_url }}
 
     steps:
       - name: 🛑 Cancel Previous Runs

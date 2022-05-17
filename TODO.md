@@ -1,0 +1,3 @@
+- Setup auth with auth0
+  - Remix auth - https://github.com/sergiodxa/remix-auth
+    - Auth0 Strategy - https://github.com/danestves/remix-auth-auth0

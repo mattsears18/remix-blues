@@ -5,6 +5,11 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
 }
 
 model User {
